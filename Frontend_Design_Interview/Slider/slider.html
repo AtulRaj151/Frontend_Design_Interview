@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="slider.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider/Carousel</title>
+</head>
+<body>
+    <div id="container">
+
+        <div class="item">
+            <img
+            src="https://source.unsplash.com/random?landscape,mountain"
+            alt=""
+          />
+
+
+
+            <img src="https://source.unsplash.com/random?landscape,cars" alt="" />
+
+
+
+            <img src="https://source.unsplash.com/random?landscape,night" alt="" />
+        </div>
+
+        <div class="navigation-button">
+            <span class="dot active" onclick="nextSlide(0)" ></span>
+            <span class="dot" onclick="nextSlide(1)" ></span>
+            <span class="dot" onclick="nextSlide(2)"></span>
+        </div>
+
+    </div>
+<script src="slider.js"></script>
+</body>
+</html>
