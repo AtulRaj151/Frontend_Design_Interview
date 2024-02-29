@@ -2,7 +2,8 @@ import { useState } from 'react';
 import './App.css'
 
 const isValidEmail = (mail) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  console.log(mail)
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,}$/;
   return emailRegex.test(mail);
 }
 
@@ -11,8 +12,8 @@ function App() {
   const [emailList, setEmailList] = useState([]);
 
 
-  const handleAddBtn = () => {
-    let mail = email;
+  const handleAddBtn = (mail) => {
+    console.log(mail)
     if (mail.trim() !== '') {
       if (isValidEmail(mail)) {
         setEmailList([...emailList, { email: mail, isValid: true }]);
@@ -24,14 +25,18 @@ function App() {
   };
 
   const handleEmailChange = (e) => {
-    const email = e.target.value;
-    setEmail(email);
+    const mail = e.target.value;
+    setEmail(mail);
+    if (isValidEmail(mail)) {
+      handleAddBtn(mail);
+    }
+
   };
 
 
   const handleOnKeyPress = (e) => {
     if (e.key === 'Enter') {
-      handleAddBtn();
+      handleAddBtn(email);
     }
   }
 
@@ -52,7 +57,7 @@ function App() {
       <div id='container'>
         <div className='input-wrapper'>
           <input className='email-input' type='text' onChange={handleEmailChange} onKeyDown={handleOnKeyPress} value={email} />
-          <button className='btn-add' onClick={handleAddBtn}>Add</button>
+          <button className='btn-add' onClick={() => handleAddBtn(email)}>Add</button>
         </div>
 
         <div className='chip-container' >
